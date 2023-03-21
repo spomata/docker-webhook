@@ -9,6 +9,7 @@ RUN         curl -#L -o webhook.tar.gz https://api.github.com/repos/adnanh/webho
 
 FROM        alpine:3.20.1
 RUN         apk add --update --no-cache curl jq tini tzdata
+RUN         apk add --update --no-cache python3 py3-requests
 COPY        --from=BUILD_IMAGE /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /config
 EXPOSE      9000
